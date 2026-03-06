@@ -101,7 +101,7 @@ def loss_function(self, recon, x, mu, logvar):
 | z₂ | 0.92 | [−3.57, +4.07] | Volatility & tail-risk signals — activated during crises and regime transitions |
 | z₃ | 0.99 | [−4.81, +2.94] | Regime-level drift — highest variance, sustained low-frequency bull/bear cycles |
 
-![VAE Latent Dimensions — SPY](outputs/02_vae_latent_space.png)
+![VAE Latent Dimensions — SPY](output_bayesian_portfolio/02_vae_latent_space.png)
 
 ---
 
@@ -131,7 +131,7 @@ for t in range(1, T):
 | ➡️ Sideways | 25.8% | +24.1% | 28.0% |
 | 🐂 Bull | 44.5% | +29.3% | 8.0% |
 
-![Asset Prices with HMM Regime Detection](outputs/01_regime_detection.png)
+![Asset Prices with HMM Regime Detection](output_bayesian_portfolio/01_regime_detection.png)
 
 ---
 
@@ -158,7 +158,7 @@ def predict_with_uncertainty(self, x, n_samples=50):
 
 This is epistemic uncertainty in action: the model knows it's less confident when asked to predict on data unlike its training distribution.
 
-![BNN Prediction Uncertainty by Asset](outputs/04_bnn_uncertainty.png)
+![BNN Prediction Uncertainty by Asset](output_bayesian_portfolio/04_bnn_uncertainty.png)
 
 **Uncertainty → position sizing via log-softened discount:**
 
@@ -212,15 +212,15 @@ def apply_weights_with_shift(returns_df, weights_df):
 
 *Green shading = Bayesian leads. The advantage concentrates around high-turbulence periods: COVID crash (2020), 2022 cross-asset selloff.*
 
-![IS Cumulative Returns](outputs/is_01_cumulative_returns.png)
+![IS Cumulative Returns](output_bayesian_portfolio/is_01_cumulative_returns.png)
 
 *Green shading = Bayesian has shallower drawdown.*
 
-![IS Drawdown](outputs/is_02_drawdown.png)
+![IS Drawdown](output_bayesian_portfolio/is_02_drawdown.png)
 
 *Bayesian Advantage Delta: all three pairs show positive Sharpe and drawdown improvements in-sample.*
 
-![IS Delta](outputs/is_04_bayesian_advantage_delta.png)
+![IS Delta](output_bayesian_portfolio/is_04_bayesian_advantage_delta.png)
 
 ---
 
@@ -228,13 +228,13 @@ def apply_weights_with_shift(returns_df, weights_df):
 
 > *$100,000 deployed January 1, 2024. Models trained exclusively on 2015–2023 data.*
 
-![OOS Cumulative Returns](outputs/oos_01_cumulative_returns.png)
+![OOS Cumulative Returns](output_bayesian_portfolio/oos_01_cumulative_returns.png)
 
-![OOS Drawdown](outputs/oos_02_drawdown.png)
+![OOS Drawdown](output_bayesian_portfolio/oos_02_drawdown.png)
 
 *OOS Bayesian Advantage Delta: Momentum maintains a positive Sharpe delta; Regime Detection and Risk Parity show slight Non-Bayesian edges on Sharpe, though Bayesian wins drawdown in all three pairs.*
 
-![OOS Delta](outputs/oos_04_bayesian_advantage_delta.png)
+![OOS Delta](output_bayesian_portfolio/oos_04_bayesian_advantage_delta.png)
 
 ---
 
@@ -313,7 +313,7 @@ def apply_weights_with_shift(returns_df, weights_df):
 
 *Bayesian strategies show more dynamic, regime-responsive allocation shifts. Compare Regime-Based (B) vs Rule-Based (NB): the Bayesian version reacts to probabilistic regime transitions, not just threshold crossings. Red dashed line = train/test split.*
 
-![Weight Allocation](outputs/wt_01_weight_allocation.png)
+![Weight Allocation](output_bayesian_portfolio/wt_01_weight_allocation.png)
 
 ---
 
@@ -394,7 +394,6 @@ Run all cells top to bottom. The pipeline will automatically download data, trai
 
 ```
 ├── main.ipynb                        # Full pipeline — run all cells top to bottom
-├── main.html                         # HTML export with all outputs rendered
 ├── README.md                         # This document
 └── output_bayesian_portfolio/
     ├── performance_metrics.csv
